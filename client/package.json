@@ -45,16 +45,5 @@
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
     "typescript": "~2.3.3"
-  },
-  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.3.",
-  "main": "app.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/samba425/angular4Todo.git"
-  },
-  "author": "",
-  "bugs": {
-    "url": "https://github.com/samba425/angular4Todo/issues"
-  },
-  "homepage": "https://github.com/samba425/angular4Todo#readme"
+  }
 }
