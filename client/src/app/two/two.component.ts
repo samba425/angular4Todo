@@ -8,7 +8,7 @@ import { FetchService } from '../fetch.service';
 })
 export class TwoComponent implements OnInit { 
   fetchdata;
-  myArray;
+  myArray =[];
   name;
   email;
   showbutton = false;
@@ -16,24 +16,40 @@ export class TwoComponent implements OnInit {
   constructor(private date: FetchService) { }
 
   ngOnInit() { 
-    this.myArray = JSON.parse(localStorage.getItem('myarray')); 
+    if(localStorage.getItem('myarray')) {
+      this.myArray = JSON.parse(localStorage.getItem('myarray')); 
+    }  else {
+      this.myArray = [];
+    }
+    console.log("sasa",this.myArray)
   }
 
   createForm(res) {
     if (!res.value.name && !res.value.email) {
       alert("fill input fields")
-    } else {
-      this.myArray = JSON.parse(localStorage.getItem('myarray'));
-      var index = this.myArray.findIndex(x => x.name == res.value.name);
-      if (index === -1) {
+    } else {  
+      console.log("myarray..",this.myArray)
+      if(this.myArray === null ){
         this.myArray.push(res.value);
-        res.reset();
-        localStorage.setItem('myarray', JSON.stringify(this.myArray));
+        localStorage.setItem('myarray', JSON.stringify(this.myArray)); 
+        
       } else {
-        alert("already exits");
-        res.reset();
+        if(this.myArray.length > 0 ) {
+          var index = this.myArray.findIndex(x => x.name == res.value.name); 
+        } else {
+          index = -1;
+        }
+        if (index === -1) {
+          this.myArray.push(res.value);
+          res.reset();
+          localStorage.setItem('myarray', JSON.stringify(this.myArray));
+        } else {
+          alert("already exits");
+          res.reset();
+        }
+      } 
       }
-    }
+      
   }
   cancel(){ 
     this.showbutton = false;
