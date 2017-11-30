@@ -1,0 +1,18 @@
+.border{ 
+    border: 1px solid #ccc;  
+}
+ 
+ form,.bm {
+     margin-bottom :20px; 
+ } 
+ .hover:hover{
+     cursor: pointer;
+     background-color: #ddd;
+ }
+.ml {
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+.right{  
+     background-color: #ddd
+}

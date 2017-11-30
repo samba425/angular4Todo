@@ -1,0 +1,15 @@
+ <span> <h3>Latest News</h3></span>
+ <hr>
+<div class="row " >
+  <div  *ngFor="let news of fetchNews">
+  <div class="col-sm-6 col-md-4 max-height">
+    <div class="thumbnail">
+      <img [src]="news.urlToImage"  alt="...">
+      <div class="caption">
+        <h4  class="overflow">{{news.title}}</h4>
+        <p class="overflow">{{news.description}}</p> 
+        <p><a href={{news.url}} target="_blank" class="btn btn-primary" role="button">Go To Website</a></p>
+      </div>
+    </div>
+  </div></div>
+</div>

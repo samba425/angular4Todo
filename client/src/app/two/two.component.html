@@ -1,0 +1,26 @@
+ 
+<h3 class="ml">Create Task</h3>
+ <form #f="ngForm" (ngSubmit)="createForm(f)">
+  <div class="">
+    <div class="col-md-2 form-group">
+    <input type="text" class="form-control" name="name" [(ngModel)]="name" placeholder="name">
+    </div>
+    <div class="col-md-2 form-group">
+    <input type="text" class="form-control" name="email" [(ngModel)]="email" placeholder="details">
+    </div>
+    <button type="submit" class="btn btn-info" *ngIf="!showbutton">submit</button>
+    <button type="button" *ngIf="showbutton" class="btn btn-primary"  (click)="update(f)">Update</button>  
+    <button type="button" *ngIf="showbutton" class="btn btn-warning"  (click)="cancel(f)">cancel</button>
+  </div>
+</form>
+<hr>
+<h3 class="ml">Task Details</h3>
+<div class="container-fluid  row" *ngFor="let item of myArray">
+  <div class="left col-md-3 hover" (click)="edit(item)">
+    <p>{{item.name}}</p>
+  </div>
+  <div class="right col-md-3">
+    <p>{{item.email}}</p>
+  </div>
+  <button class="ml btn btn-danger " type="submit" (click)="remove(item)">X</button>
+</div>
