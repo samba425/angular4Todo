@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchService } from '../fetch.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-two',
@@ -8,24 +9,41 @@ import { FetchService } from '../fetch.service';
 })
 export class TwoComponent implements OnInit { 
   fetchdata;
-  myArray =[];
+  myArray = [];
+  myArrayModel = [];
   name;
   email;
+  firstName;
+  lastName;
   showbutton = false;
+  showModelButton = false;
   key;
+  keyForm;
+  modelForms;
+
   constructor(private date: FetchService) { }
 
   ngOnInit() { 
+    this.modelForms = new FormGroup({
+      firstName: new FormControl( ),
+      lastName: new FormControl( )
+    });
+
     if(localStorage.getItem('myarray')) {
       this.myArray = JSON.parse(localStorage.getItem('myarray')); 
     }  else {
       this.myArray = [];
     }
-    console.log("sasa",this.myArray)
+
+       if(localStorage.getItem('myarrayModel')) {
+    this.myArrayModel = JSON.parse(localStorage.getItem('myarrayModel')); 
+    }  else {
+      this.myArray = [];
+    } 
   }
 
   createForm(res) {
-    if (!res.value.name && !res.value.email) {
+       if (!res.value.name && !res.value.email) {
       alert("fill input fields")
     } else {  
       console.log("myarray..",this.myArray)
@@ -49,7 +67,6 @@ export class TwoComponent implements OnInit {
         }
       } 
       }
-      
   }
   cancel(){ 
     this.showbutton = false;
@@ -79,4 +96,66 @@ export class TwoComponent implements OnInit {
       }
     }
   }
+
+//model template form
+
+  modelform(res) {    
+     if (!res.value.firstName && !res.value.lastName) {
+      alert("fill input fields")
+    } else {   
+      if(this.myArrayModel === null ){
+        this.myArrayModel.push(res.value);
+        localStorage.setItem('myarrayModel', JSON.stringify(this.myArrayModel)); 
+        
+      } else {
+        if(this.myArrayModel.length > 0 ) {
+          var index = this.myArrayModel.findIndex(x => x.firstName == res.value.firstName); 
+        } else {
+          index = -1;
+        }
+        if (index === -1) {
+          this.myArrayModel.push(res.value);
+          res.reset();
+          localStorage.setItem('myarrayModel', JSON.stringify(this.myArrayModel));
+        } else {
+          alert("already exits");
+          res.reset();
+        }
+      } 
+      }
+}
+ 
+
+   modelFormCancel(){ 
+    this.showbutton = false;
+    this.firstName = '';
+    this.lastName = ''; 
+  }
+  modelFormEdit(res) {
+    console.log("model form edit",res)
+    this.keyForm = this.myArrayModel.indexOf(res);
+    this.firstName = res.firstName;
+    this.lastName = res.lastName;
+    this.showModelButton = true;
+  }
+  modelFormUpdate(f) {
+    
+    this.myArrayModel.splice(this.keyForm, 1, f.value);
+    localStorage.setItem('myarrayModel', JSON.stringify(this.myArrayModel));
+    this.firstName = '';
+    this.lastName = '';
+    this.showModelButton = false;
+  }
+
+  modelFormRemove(data) {
+    for (var i = 0; i < this.myArrayModel.length; i++) {
+      if (this.myArrayModel[i].firstName === data.firstName) {
+        let findIndex = this.myArrayModel.indexOf(this.myArrayModel[i]);
+        this.myArrayModel.splice(findIndex, 1);
+        localStorage.setItem('myarrayModel', JSON.stringify(this.myArrayModel));
+      }
+    }
+  }
+
+
 }

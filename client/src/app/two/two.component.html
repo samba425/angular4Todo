@@ -1,21 +1,44 @@
- 
-<h3 class="ml">Create Task</h3>
- <form #f="ngForm" (ngSubmit)="createForm(f)">
-  <div class="">
-    <div class="col-md-2 form-group">
-    <input type="text" class="form-control" name="name" [(ngModel)]="name" placeholder="name">
+<div class="container">
+  <div class="row">
+    <div class="col col-md-6">
+      <h3 class="ml">Create Task</h3>
+      <form #f="ngForm" (ngSubmit)="createForm(f)">
+        <div class="">
+          <div class="col-md-4 form-group">
+            <input type="text" class="form-control" name="name" [(ngModel)]="name" placeholder="name">
+          </div>
+          <div class="col-md-4 form-group">
+            <input type="text" class="form-control" name="email" [(ngModel)]="email" placeholder="details">
+          </div>
+          <button type="submit" class="btn btn-info" *ngIf="!showbutton">submit</button>
+          <button type="button" *ngIf="showbutton" class="btn btn-primary" (click)="update(f)">Update</button>
+          <button type="button" *ngIf="showbutton" class="btn btn-warning" (click)="cancel(f)">cancel</button>
+        </div>
+      </form>
     </div>
-    <div class="col-md-2 form-group">
-    <input type="text" class="form-control" name="email" [(ngModel)]="email" placeholder="details">
+    <div class="col col-md-6">
+      <h3>Model Form</h3>
+      <form [formGroup]="modelForms" (ngSubmit)="modelform(modelForms)">
+        <div class="form-group col-md-4 ">
+          <input type="text" class="form-control"  [(ngModel)]="firstName"  placeholder="FirstName" formControlName="firstName">
+        </div>
+        <div class="form-group col-md-4 ">
+          <input type="text" class="form-control"  [(ngModel)]="lastName" placeholder="lastName" formControlName="lastName">
+        </div> 
+        <button type="submit" class="btn btn-info" *ngIf="!showModelButton">submit</button>
+          <button type="button" *ngIf="showModelButton" class="btn btn-primary" (click)="modelFormUpdate(modelForms)">Update</button>
+          <button type="button" *ngIf="showModelButton" class="btn btn-warning" (click)="modelFormCancel(modelForms)">cancel</button>
+      </form>
     </div>
-    <button type="submit" class="btn btn-info" *ngIf="!showbutton">submit</button>
-    <button type="button" *ngIf="showbutton" class="btn btn-primary"  (click)="update(f)">Update</button>  
-    <button type="button" *ngIf="showbutton" class="btn btn-warning"  (click)="cancel(f)">cancel</button>
   </div>
-</form>
+</div>
+
+
 <hr>
-<h3 class="ml">Task Details</h3>
-<div class="container-fluid  row" *ngFor="let item of myArray">
+<div class="row ml">
+  <div class="col col-md-6">
+      <h3 class="ml">Task Details</h3>
+<div class="container-fluid  row " *ngFor="let item of myArray">
   <div class="left col-md-3 hover" (click)="edit(item)">
     <p>{{item.name}}</p>
   </div>
@@ -24,3 +47,19 @@
   </div>
   <button class="ml btn btn-danger " type="submit" (click)="remove(item)">X</button>
 </div>
+  </div>
+   <div class="col col-md-6">
+    <h3 class="ml">Task Model Details</h3>
+<div class="container-fluid  row" *ngFor="let item of myArrayModel">
+  <div class="left col-md-3 hover" (click)="modelFormEdit(item)">
+    <p>{{item.firstName}}</p>
+  </div>
+  <div class="right col-md-3">
+    <p>{{item.lastName}}</p>
+  </div>
+  <button class="ml btn btn-danger " type="submit" (click)="modelFormRemove(item)">X</button>
+</div>
+  </div> 
+</div>
+
+

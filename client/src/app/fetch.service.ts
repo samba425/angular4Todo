@@ -19,4 +19,12 @@ export class FetchService {
         return data.json()
       })
   }
+
+  getGitUser(username){
+    return this.http.get('https://api.github.com/search/users?q='+username)
+    .map((data) => {
+      console.log("htpp........",data.json())
+      return data.json()
+    })
+  }
 }

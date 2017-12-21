@@ -12,16 +12,21 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^4.0.0",
+    "@angular/animations": "^4.4.6",
+    "@angular/cdk": "^5.0.0-rc.2",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/core": "^4.0.0",
     "@angular/forms": "^4.0.0",
     "@angular/http": "^4.0.0",
+    "@angular/material": "^5.0.0-rc.2",
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
-    "@angular/router": "^4.0.0", 
-    "core-js": "^2.4.1", 
+    "@angular/router": "^4.0.0",
+    "body-parser": "^1.18.2",
+    "bootstrap": "^3.3.7",
+    "core-js": "^2.4.1",
+    "express": "^4.16.2",
     "rxjs": "^5.4.1",
     "zone.js": "^0.8.14"
   },
@@ -45,5 +50,16 @@
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
     "typescript": "~2.3.3"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.3.",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samba425/angular4Todo.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/samba425/angular4Todo/issues"
+  },
+  "homepage": "https://github.com/samba425/angular4Todo#readme"
 }

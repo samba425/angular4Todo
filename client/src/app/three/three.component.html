@@ -1,0 +1,35 @@
+<div class="container">
+    <p>Git User Search</p> 
+<form>
+ <div class="form-group">
+     <input type="text" class="form-control" placeholder="Username....." name="userName" [(ngModel)]="userName" (keyup)="search()">
+ </div> 
+</form>
+
+  <div class="row">
+    <div class="col-10"> 
+            <ul class="nav nav-pills" role="tablist">
+                    <li role="presentation" *ngFor="let item of gituser"  class="active"> 
+                   <button class="btn btn-success" (click)="getUser(item)">  {{ item.login}}</button>
+                </li>
+         </ul> 
+    </div>
+</div>
+<div class="row" *ngIf="uniqueUser">
+        <div class="list-group">
+              <a href="{{ uniqueUser.html_url }}" target="_blank" class="list-group-item btn btn-default">Git Url</a>
+                
+                <div class="col-md-4">
+                   <img src="{{uniqueUser.avatar_url}}" alt="user pic" width="200px">  
+                </div >
+                 <div class="col-md-8"> 
+                        <a class="list-group-item">Id : {{ uniqueUser.id}}</a>
+                        <a class="list-group-item">User Name : {{ uniqueUser.login}}</a>
+                        <a class="list-group-item">Git Url : {{ uniqueUser.html_url }}</a> 
+                </div>
+              </div>
+
+    
+</div>
+
+</div>
