@@ -10,7 +10,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { TwoComponent } from './two/two.component';
 import { ThreeComponent } from './three/three.component';
 import { HomeComponent } from './home/home.component';
-import { SqrtPipe } from './sqrt.pipe';  
+import { SqrtPipe } from './sqrt.pipe';
+import { FourComponent } from './four/four.component';  
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  
 // import {MatButtonModule, MatCheckboxModule,MatMenuModule, MatSidenavModule } from '@angular/material';
 
@@ -22,7 +23,8 @@ import { SqrtPipe } from './sqrt.pipe';
     TwoComponent,
     HomeComponent,
     SqrtPipe,
-    ThreeComponent 
+    ThreeComponent,
+    FourComponent 
   ],
   imports: [
      BrowserModule,
@@ -39,6 +41,7 @@ import { SqrtPipe } from './sqrt.pipe';
       { path:'one',component: OnewComponent},
       { path:'two',component: TwoComponent},
       { path:'three',component: ThreeComponent},
+      { path:'four',component: FourComponent},
     ])
   ],
   providers: [FetchService],

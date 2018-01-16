@@ -1,0 +1,11 @@
+.row {
+    display: flex;
+    height: 100vh;
+} 
+.skyblue {
+    background-color: skyblue;
+}
+
+ .green {
+    background-color: lightgreen
+}
